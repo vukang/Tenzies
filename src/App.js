@@ -6,6 +6,8 @@ import Confetti from 'react-confetti';
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
+  const [rolls, setRolls] = React.useState(0);
+  const [highscore, setHighscore] = React.useState(localStorage.getItem('score') || 0);
 
   React.useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -15,6 +17,10 @@ export default function App() {
       setTenzies(true);
     }
   }, [dice]);
+
+  React.useEffect(() => {
+    if (tenzies && rolls < highscore) setHighscore(rolls);
+  }, [tenzies, rolls, highscore]);
 
   function generateNewDie() {
     return {
@@ -34,6 +40,7 @@ export default function App() {
 
   function rollDice() {
     if (!tenzies) {
+      setRolls((prevrolls) => prevrolls + 1);
       setDice((oldDice) =>
         oldDice.map((die) => {
           return die.isHeld ? die : generateNewDie();
@@ -42,6 +49,7 @@ export default function App() {
     } else {
       setTenzies(false);
       setDice(allNewDice());
+      setRolls(0);
     }
   }
 
@@ -64,6 +72,16 @@ export default function App() {
 
   return (
     <main>
+      <div className='stats'>
+        <div className='highscore'>
+          Highscore: {highscore}
+          <br />
+        </div>
+        <div className='currentScore'>
+          Elapsed time: <br /> {/* elapsed time here */} <br />
+          Rolls: {rolls}
+        </div>
+      </div>
       {tenzies && <Confetti />}
       <h1 className='title'>Tenzies</h1>
       <p className='instructions'>

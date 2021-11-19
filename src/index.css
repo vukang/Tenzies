@@ -40,6 +40,24 @@ main {
   align-items: center;
 }
 
+.stats {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+}
+
+.highscore {
+  height: 5vh;
+  width: 150px;
+  margin-right: auto;
+}
+.currentScore {
+  height: 5vh;
+  width: 150px;
+  text-align: right;
+}
+
 .title {
   font-size: 40px;
   margin: 0;
