@@ -49,12 +49,12 @@ main {
 
 .highscore {
   height: 5vh;
-  width: 150px;
+  width: 200px;
   margin-right: auto;
 }
 .currentScore {
   height: 5vh;
-  width: 150px;
+  max-width: 200px;
   text-align: right;
 }
 

@@ -1,13 +1,18 @@
 import React from 'react';
 import Die from './Die';
 import { nanoid } from 'nanoid';
+import { useStopwatch } from 'react-timer-hook';
 import Confetti from 'react-confetti';
 
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [rolls, setRolls] = React.useState(0);
-  const [highscore, setHighscore] = React.useState(localStorage.getItem('score') || 0);
+  const [highscore, setHighscore] = React.useState(
+    JSON.parse(localStorage.getItem('highscore')) || { rolls: 0, time: '' }
+  );
+  const [time, setTime] = React.useState('');
+  const { seconds, minutes, start, pause, reset } = useStopwatch({ autoStart: false });
 
   React.useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -19,8 +24,23 @@ export default function App() {
   }, [dice]);
 
   React.useEffect(() => {
-    if (tenzies && rolls < highscore) setHighscore(rolls);
-  }, [tenzies, rolls, highscore]);
+    if (tenzies) {
+      pause();
+      setTime(`${minutes}:${seconds}`);
+
+      if ((rolls < highscore.rolls && time <= highscore.time) || highscore.rolls === 0) {
+        setHighscore((prevScore) => ({
+          ...prevScore,
+          rolls: rolls,
+          time: `${minutes}:${seconds}`,
+        }));
+      }
+    }
+  }, [tenzies, rolls, highscore, pause, minutes, seconds, time]);
+
+  React.useEffect(() => {
+    localStorage.setItem('highscore', JSON.stringify(highscore));
+  }, [highscore]);
 
   function generateNewDie() {
     return {
@@ -39,6 +59,11 @@ export default function App() {
   }
 
   function rollDice() {
+    if (rolls === 0) {
+      reset();
+      start();
+    }
+
     if (!tenzies) {
       setRolls((prevrolls) => prevrolls + 1);
       setDice((oldDice) =>
@@ -47,6 +72,7 @@ export default function App() {
         })
       );
     } else {
+      reset();
       setTenzies(false);
       setDice(allNewDice());
       setRolls(0);
@@ -74,11 +100,14 @@ export default function App() {
     <main>
       <div className='stats'>
         <div className='highscore'>
-          Highscore: {highscore}
+          Highscore: {highscore.rolls} ({highscore.time})
           <br />
         </div>
         <div className='currentScore'>
-          Elapsed time: <br /> {/* elapsed time here */} <br />
+          <span>
+            {rolls !== 0 ? `Time: ${minutes}:${seconds}` : '(pre-start thinking time)'}
+          </span>
+          <br />
           Rolls: {rolls}
         </div>
       </div>
