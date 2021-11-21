@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Tenzies/static/css/main.3d4b8756.chunk.css",
-    "main.js": "/Tenzies/static/js/main.6b52abc1.chunk.js",
-    "main.js.map": "/Tenzies/static/js/main.6b52abc1.chunk.js.map",
-    "runtime-main.js": "/Tenzies/static/js/runtime-main.fb3d50d4.js",
-    "runtime-main.js.map": "/Tenzies/static/js/runtime-main.fb3d50d4.js.map",
-    "static/js/2.d35df209.chunk.js": "/Tenzies/static/js/2.d35df209.chunk.js",
-    "static/js/2.d35df209.chunk.js.map": "/Tenzies/static/js/2.d35df209.chunk.js.map",
-    "static/js/3.d5ae1430.chunk.js": "/Tenzies/static/js/3.d5ae1430.chunk.js",
-    "static/js/3.d5ae1430.chunk.js.map": "/Tenzies/static/js/3.d5ae1430.chunk.js.map",
+    "main.js": "/Tenzies/static/js/main.788150b8.chunk.js",
+    "main.js.map": "/Tenzies/static/js/main.788150b8.chunk.js.map",
+    "runtime-main.js": "/Tenzies/static/js/runtime-main.4540a003.js",
+    "runtime-main.js.map": "/Tenzies/static/js/runtime-main.4540a003.js.map",
+    "static/js/2.419d18bf.chunk.js": "/Tenzies/static/js/2.419d18bf.chunk.js",
+    "static/js/2.419d18bf.chunk.js.map": "/Tenzies/static/js/2.419d18bf.chunk.js.map",
+    "static/js/3.9d3fe803.chunk.js": "/Tenzies/static/js/3.9d3fe803.chunk.js",
+    "static/js/3.9d3fe803.chunk.js.map": "/Tenzies/static/js/3.9d3fe803.chunk.js.map",
     "index.html": "/Tenzies/index.html",
     "static/css/main.3d4b8756.chunk.css.map": "/Tenzies/static/css/main.3d4b8756.chunk.css.map",
-    "static/js/2.d35df209.chunk.js.LICENSE.txt": "/Tenzies/static/js/2.d35df209.chunk.js.LICENSE.txt"
+    "static/js/2.419d18bf.chunk.js.LICENSE.txt": "/Tenzies/static/js/2.419d18bf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fb3d50d4.js",
-    "static/js/2.d35df209.chunk.js",
+    "static/js/runtime-main.4540a003.js",
+    "static/js/2.419d18bf.chunk.js",
     "static/css/main.3d4b8756.chunk.css",
-    "static/js/main.6b52abc1.chunk.js"
+    "static/js/main.788150b8.chunk.js"
   ]
 }
