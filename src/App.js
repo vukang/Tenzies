@@ -100,12 +100,16 @@ export default function App() {
     <main>
       <div className='stats'>
         <div className='highscore'>
-          Highscore: {highscore.rolls} ({highscore.time})
+          Highscore:
+          <br />
+          {highscore.rolls > 0
+            ? `${highscore.rolls} rolls in (${highscore.time})  minutes`
+            : 'play your first game'}
           <br />
         </div>
         <div className='currentScore'>
           <span>
-            {rolls !== 0 ? `Time: ${minutes}:${seconds}` : '(pre-start thinking time)'}
+            {rolls !== 0 ? `Time: ${minutes}:${seconds}` : '(pre-roll thinking time)'}
           </span>
           <br />
           Rolls: {rolls}
